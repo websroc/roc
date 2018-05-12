@@ -3,7 +3,7 @@
     <el-form ref="form" :model="form" class="container" :rules="rules">
       <el-form-item>
         <div class="avatar">
-          <!-- <img src="../assets/avatar.jpg" alt=""> -->
+          <img src="../assets/aviter.png" alt="">
         </div>
       </el-form-item>
       <el-form-item prop="username">
@@ -93,6 +93,10 @@ export default {
       border: 10px solid #fff;
       box-shadow: 0 1px 5px #ccc;
       overflow: hidden;
+      img {
+        width: 120px;
+        height: 120px;
+      }
     }
     .login-btn {
       width: 100%;
