@@ -47,7 +47,8 @@ export default {
             console.log(res.data.meta.status)
             // 如果成功要跳转至首页, 将token保存到localStorage
             if (res.data.meta.status === 200) {
-              localStorage.setItem('mytoken', res.data.token)
+              console.log(res.data.data.token)
+              localStorage.setItem('mytoken', res.data.data.token)
               this.$router.push({name: 'mian'})
             } else {
               // 如果失败，展示提示信息
