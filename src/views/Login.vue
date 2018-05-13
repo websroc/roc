@@ -45,10 +45,11 @@ export default {
         if (valide) {
           checkUser(this.form).then(res => {
             console.log(res.data.meta.status)
-            // 如果成功要跳转至首页, 将token保存到localStorage
+            // 如果成功要跳转至首页, 将token保存到localStorage, 并且将username提交到mutation
             if (res.data.meta.status === 200) {
               console.log(res.data.data.token)
               localStorage.setItem('mytoken', res.data.data.token)
+              this.$store.commit('setUsername', res.data.data.username)
               this.$router.push({name: 'mian'})
             } else {
               // 如果失败，展示提示信息
