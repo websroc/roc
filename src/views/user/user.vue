@@ -57,18 +57,18 @@
         </template>
       </el-table-column>
     </el-table>
-    <!-- <div class="page">
+    <div class="page">
       <el-pagination
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
         :current-page="1"
-        :page-sizes="[10, 20, 30, 40]"
-        :page-size="10"
+        :page-sizes="[1, 2, 3, 4]"
+        :page-size="1"
         layout="total, sizes, prev, pager, next, jumper"
         :total="total"
         >
       </el-pagination>
-    </div> -->
+    </div>
 
     <!-- 添加用户对话框 -->
     <!-- <el-dialog title="添加用户" :visible.sync="addDialogFormVisible">
@@ -186,11 +186,23 @@ export default {
   methods: {
     // 初始化表格数据
     initList () {
-      getUserList({params: {query: '', pagenum: 1, pagesize: 3}}).then(res => {
+      getUserList({params: {query: this.query, pagenum: this.pagenum, pagesize: this.pagesize}}).then(res => {
         console.log(res.data.users)
         this.userList = res.data.users
+        this.total = res.data.total
       })
+    },
+    handleSizeChange (val) {
+      console.log(`每页 ${val} 条`)
+      this.pagesize = val
+      this.initList()
+    },
+    handleCurrentChange (val) {
+      console.log(`当前页: ${val}`)
+      this.pagenum = val
+      this.initList()
     }
+
   }
 }
 </script>
