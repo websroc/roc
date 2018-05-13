@@ -7,6 +7,7 @@
         <el-menu
           default-active="2"
           :collapse="isCollapse"
+          :router="true"
           class="el-menu-admin"
           @open="handleOpen"
           @close="handleClose"
@@ -18,7 +19,7 @@
               <i class="el-icon-location"></i>
               <span>用户管理</span>
             </template>
-            <el-menu-item index="2">
+            <el-menu-item index="/user">
               <i class="el-icon-menu"></i>
               <span slot="title">用户列表</span>
             </el-menu-item>
@@ -75,7 +76,7 @@ export default {
   mounted () {
     let params = {params: {query: '', pagenum: 1, pagesize: 1}}
     getUserList(params).then(res => {
-      console.log(res)
+      // console.log(res)
     })
   }
 }

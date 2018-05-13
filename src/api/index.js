@@ -18,7 +18,6 @@ axios.interceptors.request.use(function (config) {
 export const checkUser = params => {
   return axios.post('login', params)
 }
-
 export const getUserList = params => {
-  return axios.post('users', params)
+  return axios.get('users', params).then(res => res.data)
 }
